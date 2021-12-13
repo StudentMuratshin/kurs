@@ -18,7 +18,7 @@ void light::phi_minus()
 	phi--;
 }
 
-void light::lines(float xx, float yy, int ksi, VertexArray& lines_1)
+void light::lines(float xx, float yy, int ksi, VertexArray& lines_1, vector<Circle> vec_circles, vector<Polygon> vec_polygons, float& x, float& y)
 {
 	
 	//VertexArray lines_1(LinesStrip, 2);
@@ -30,10 +30,33 @@ void light::lines(float xx, float yy, int ksi, VertexArray& lines_1)
 	float check = -1;
 	float length_polygon = 10000000;
 	float min_length_polygon = 10000000;
+
+	if (vec_polygons.size() != 0)
+	{
+		for (int i = 0; i < vec_polygons.size(); i++)
+		{
+			for (int j = 0; j < vec_polygons[i].getPointCount() - 1; j++)
+			{
+				if (intersect(0, 0, X1, Y1, vec_polygons[i].getPoint(j).x, vec_polygons[i].getPoint(j).y,
+					vec_polygons[i].getPoint(j + 1).x, vec_polygons[i].getPoint(j + 1).y, x, y))
+				{
+					check = 1;
+					length_polygon = length(x, y);
+					if (length_polygon <= min_length_polygon)
+					{
+						lines_1[0].position = Vector2f(x, y);
+						min_length_polygon = length_polygon;
+					}
+				}
+			}
+		}
+	}
+
+
+
 	if (vec_circles.size() != 0)
 	{
 		float min_to_cirlce = length(vec_circles[0].getPosition().x, vec_circles[0].getPosition().y);
-		cout << min_to_cirlce << endl;
 		for (int j = 0; j < vec_circles.size(); ++j)
 		{
 			float vect_lenght = length(X1, Y1);                             //длина вектора
@@ -51,6 +74,14 @@ void light::lines(float xx, float yy, int ksi, VertexArray& lines_1)
 			norm_lenght.y = norm_lenght.y * lenght_circles;
 
 			float length_in_circles = check_in_circle(norm_lenght.x, vec_circles[j].getPosition().x, norm_lenght.y, vec_circles[j].getPosition().y); //длина положения конца вектора до окружности
+
+			if (check == 1 and length_polygon < lenght_circles)
+			{
+				if (length_in_circles <= vec_circles[j].getRadius() and lenght_circles <= vect_lenght)
+				{
+					continue;
+				}
+			}
 
 			if (check == 1 and lenght_circles <= min_to_cirlce)
 			{

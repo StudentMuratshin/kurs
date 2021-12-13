@@ -15,7 +15,6 @@ public:
     {
         R = R; G = G; B = B;
         this->setFillColor(Color(R, G, B));
-
         this->setRadius(r);
         this->setPosition(x, y);
         this->setOrigin(r, r);
@@ -29,8 +28,8 @@ class circles
 public:
     vector <Circle> vec_circles;    //вектор окружностей
 	void Add_circles(float x, float y); //добавление окр-ей
-    float check_in_circle(float x1, float x2, float y1, float y2);
     void erase_circle(float x, float y);
+    float check_in_circle(float x1, float x2, float y1, float y2);
     float length(float x1, float x2);
 };
 
