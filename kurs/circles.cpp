@@ -26,7 +26,6 @@ void circles::erase_circle(float x, float y)
 {
     for (int i = 0; i < vec_circles.size(); i++)
     {
-
         float length = check_in_circle(x, vec_circles[i].getPosition().x,
             y, vec_circles[i].getPosition().y);
         if (length <= vec_circles[i].getRadius())
