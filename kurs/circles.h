@@ -8,12 +8,11 @@ using namespace sf;
 using namespace std;
 
 
-class Circle : public CircleShape
+class Create_Circle : public CircleShape
 {
 public:
-    Circle(int R, int G, int B, float x, float y, int r)
+    Create_Circle(int R, int G, int B, float x, float y, int r)
     {
-        R = R; G = G; B = B;
         this->setFillColor(Color(R, G, B));
         this->setRadius(r);
         this->setPosition(x, y);
@@ -22,11 +21,10 @@ public:
 };
 
 
-class circles
+class Circles
 {
-    
 public:
-    vector <Circle> vec_circles;    //вектор окружностей
+    vector <Create_Circle> vec_circles;    //вектор окружностей
 	void Add_circles(float x, float y); //добавление окр-ей
     void erase_circle(float x, float y);
     float check_in_circle(float x1, float x2, float y1, float y2);

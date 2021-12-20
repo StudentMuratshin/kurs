@@ -18,9 +18,9 @@ int main()
     int fps = 30, type = 2;
     float x, y;
     srand(time(NULL));
-    circles circles;
-    light light;
-    polygons polygons;
+    Circles circles;
+    Light light;
+    Polygons polygons;
 
     RenderWindow window(VideoMode(), "курсовая", Style::Fullscreen);
     window.setFramerateLimit(fps);

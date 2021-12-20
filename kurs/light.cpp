@@ -8,17 +8,17 @@
 using namespace sf;
 using namespace std;
 
-void light::phi_plus()
+void Light::phi_plus()
 {
 	phi++;
 }
 
-void light::phi_minus()
+void Light::phi_minus()
 {
 	phi--;
 }
 
-void light::lines(float xx, float yy, int ksi, VertexArray& lines_1, vector<Circle> vec_circles, vector<Polygon> vec_polygons, float& x, float& y)
+void Light::lines(float xx, float yy, int ksi, VertexArray& lines_1, vector<Create_Circle> vec_circles, vector<Create_Polygon> vec_polygons, float& x, float& y)
 {
 	
 	//VertexArray lines_1(LinesStrip, 2);

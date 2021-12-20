@@ -12,17 +12,17 @@ using namespace std;
 
 
 
-void circles::Add_circles(float x, float y)
+void Circles::Add_circles(float x, float y)
 {
-    vec_circles.push_back(Circle(250, 250, 0, x, y, 50));  //добавляет окру-ти в вектор
+    vec_circles.push_back(Create_Circle(255, 255, 255, x, y, 50));  //добавляет окру-ти в вектор
 }
 
-float circles::check_in_circle(float x1, float x2, float y1, float y2)
+float Circles::check_in_circle(float x1, float x2, float y1, float y2)
 {
     return(sqrt((pow(x1 - x2, 2)) + (pow(y1 - y2, 2))));
 }
 
-void circles::erase_circle(float x, float y)
+void Circles::erase_circle(float x, float y)
 {
     for (int i = 0; i < vec_circles.size(); i++)
     {
@@ -35,7 +35,7 @@ void circles::erase_circle(float x, float y)
     }
 }
 
-float circles::length(float x1, float x2)
+float Circles::length(float x1, float x2)
 {
     return (sqrt(pow(x1, 2) + pow(x2, 2)));
 }
